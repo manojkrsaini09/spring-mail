@@ -43,6 +43,10 @@ public class HomeController {
 	@Autowired
 	private MailService mailService;
 
+	public static final String mailID1 = "";
+	public static final String mailID2 = "";
+	public static final String mailID3 = "";
+	
 	@RequestMapping(value = "/simpleTextMail" , method = RequestMethod.GET)
 	public void sendEmail() throws Exception{
 
@@ -56,7 +60,7 @@ public class HomeController {
 		Recipient recipient1 = new Recipient();
 		
 		// Initialized mail address
-		MailAddress mailAddress = new MailAddress("Manoj", "manoj.saini@metacube.com");
+		MailAddress mailAddress = new MailAddress("User", mailID1);
 		
 		// set mail address in a recipient object
 		recipient1.setMailAddress(mailAddress);
@@ -69,14 +73,14 @@ public class HomeController {
 
 		// Created second recipient
 		Recipient recipient2 = new Recipient();
-		mailAddress = new MailAddress("Manoj", "manu.it007@gmail.com");
+		mailAddress = new MailAddress("User", mailID2);
 		recipient2.setMailAddress(mailAddress);
 		recipient2.setRecipientType(RecipientType.BCC);
 		recipients.add(recipient2);
 
 		//Created second recipient
 		Recipient recipient3 = new Recipient();
-		mailAddress = new MailAddress("Manoj", "manojkrsaini09@gmail.com");
+		mailAddress = new MailAddress("User", mailID3);
 		recipient3.setMailAddress(mailAddress);
 		recipient3.setRecipientType(RecipientType.CC);
 		recipients.add(recipient3);
@@ -93,35 +97,6 @@ public class HomeController {
 		// Call service method to send mail
 		boolean status =mailService.sendmail(email);
 	}
-	/*
-	@RequestMapping(value = "/pdfAttachmentMail" , method = RequestMethod.GET)
-	public void sendPdfInEmail() throws Exception{
-
-		MailObject email = new MailObject();
-		List<Recipient> recipients = new ArrayList<Recipient>();
-		Recipient recipient1 = new Recipient();
-		MailAddress mailAddress = new MailAddress("Manoj", "manoj.saini@metacube.com");
-		recipient1.setMailAddress(mailAddress);
-		recipient1.setRecipientType(RecipientType.TO);
-		recipients.add(recipient1);
-
-		Recipient recipient2 = new Recipient();
-		mailAddress = new MailAddress("Manoj", "manu.it007@gmail.com");
-		recipient2.setMailAddress(mailAddress);
-		recipient2.setRecipientType(RecipientType.BCC);
-		recipients.add(recipient2);
-
-		Recipient recipient3 = new Recipient();
-		mailAddress = new MailAddress("Manoj", "manojkrsaini09@gmail.com");
-		recipient3.setMailAddress(mailAddress);
-		recipient3.setRecipientType(RecipientType.CC);
-		recipients.add(recipient3);
-
-		email.setRecipients(recipients);
-		email.setSubject("Spring mail test.");
-		email.setTextMessage("Hi this is a test mail");
-		mailService.sendmail(email);
-	}*/
 
 	@RequestMapping(value = "/pdfAttachmentMail" , method = RequestMethod.GET)
 	public void sendPdfInmail() {
@@ -139,19 +114,19 @@ public class HomeController {
 		MailObject email = new MailObject();
 		List<Recipient> recipients = new ArrayList<Recipient>();
 		Recipient recipient1 = new Recipient();
-		MailAddress mailAddress = new MailAddress("Manoj", "manoj.saini@metacube.com");
+		MailAddress mailAddress = new MailAddress("User", mailID1);
 		recipient1.setMailAddress(mailAddress);
 		recipient1.setRecipientType(RecipientType.TO);
 		recipients.add(recipient1);
 
 		Recipient recipient2 = new Recipient();
-		mailAddress = new MailAddress("Manoj", "manu.it007@gmail.com");
+		mailAddress = new MailAddress("User",mailID2);
 		recipient2.setMailAddress(mailAddress);
 		recipient2.setRecipientType(RecipientType.BCC);
 		recipients.add(recipient2);
 
 		Recipient recipient3 = new Recipient();
-		mailAddress = new MailAddress("Manoj", "manojkrsaini09@gmail.com");
+		mailAddress = new MailAddress("User", mailID3);
 		recipient3.setMailAddress(mailAddress);
 		recipient3.setRecipientType(RecipientType.CC);
 		recipients.add(recipient3);
